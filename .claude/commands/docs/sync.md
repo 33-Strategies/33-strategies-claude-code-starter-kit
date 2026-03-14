@@ -8,6 +8,16 @@ model: sonnet
 
 Analyze recent project work and update all documentation to capture **actionable knowledge** that future developers and AI agents need. This is NOT about documenting what was done (change logs), but about documenting what future contributors need to KNOW to work effectively.
 
+## Mandatory Deliverables
+
+Every sync MUST address these three documentation tiers:
+
+1. **CLAUDE.md** - Concise reference for AI agents (gotchas, patterns, key files)
+2. **Developer Guides** - Deep-dive tutorials in `developer-guides/` for humans extending features
+3. **README.md** - User-facing overview (if applicable)
+
+**IMPORTANT:** If a significant new feature was implemented, CREATE a new developer guide in `developer-guides/`. Don't just update CLAUDE.md - that's for quick reference. Developer guides provide the full tutorial with examples, testing strategies, and extension patterns.
+
 ## Phase 1: Discovery
 
 ### 1.1 Identify All Documentation
@@ -17,10 +27,15 @@ Find all documentation files that may need updating:
 !git ls-files '*.md' | head -20
 ```
 
+```bash
+!ls -la developer-guides/
+```
+
 Key files to always check:
-- CLAUDE.md (AI agent instructions)
+- CLAUDE.md (AI agent instructions - concise patterns & gotchas)
 - README.md (project overview)
-- Any files in `docs/` or `developer-guides/`
+- `developer-guides/*.md` (deep-dive implementation guides)
+- Any files in `docs/`
 - Any `*-guide.md` or `*-notes.md` files
 
 ### 1.2 Analyze Recent Changes
@@ -78,16 +93,34 @@ For each documentation file, determine what forward-looking knowledge needs to b
 - Updated SOPs based on lessons learned
 - New tools, scripts, or utilities that agents should know about
 - Gotchas that will affect future AI agent work
+- Key file references (not full tutorials)
 
 **README.md Updates** - Focus on:
 - New features that users need to understand
 - Updated setup or configuration requirements
 - Changed project structure or architecture
 
-**Developer Guides** - Focus on:
-- How to extend or modify new features
-- Integration patterns for new components
-- Testing strategies for new functionality
+**Developer Guides** (CRITICAL - Create new guides for significant features):
+
+Ask: "Was a significant new feature or system added?" If YES, create `developer-guides/{feature-name}-guide.md`
+
+A developer guide should include:
+- **Overview**: What the feature does and why it exists
+- **Architecture**: Data flow diagrams, key abstractions
+- **Key Files Reference**: Table of all relevant files with purposes
+- **Step-by-step tutorials**: How to extend the feature (e.g., "Adding New X")
+- **Testing strategies**: Manual testing flow, API testing examples
+- **Common Issues & Solutions**: Troubleshooting guide
+- **Future Enhancements**: Ideas for extending the feature
+
+Existing guides in this project:
+- `chat-conversation-system-guide.md`
+- `context-layer-system-guide.md`
+- `document-processing-guide.md`
+- `profile-recommendation-guide.md`
+- `share-link-access-guide.md`
+- `testing-dojo-guide.md`
+- `explorer-mode-guide.md`
 
 ### Update Format
 
@@ -138,8 +171,23 @@ Before finalizing each update, verify:
 
 After completing updates, provide a summary:
 
-1. **Files Updated**: List each doc file modified
-2. **Knowledge Added**: Brief description of key knowledge captured
-3. **Recommended Follow-ups**: Any areas that need deeper documentation
+1. **Files Updated**: List each doc file modified or created
+2. **Developer Guides**:
+   - New guides created (if any)
+   - Existing guides updated (if any)
+   - Justification if NO guide was created for significant work
+3. **Knowledge Added**: Brief description of key knowledge captured
+4. **Recommended Follow-ups**: Any areas that need deeper documentation
+
+### Output Checklist
+
+Before finishing, verify:
+- [ ] CLAUDE.md updated with concise patterns/gotchas
+- [ ] Developer guide created OR justified why not needed
+- [ ] Key models section updated (if schema changed)
+- [ ] Cross-references added between CLAUDE.md and developer guides
 
 Remember: The goal is to make the next person (human or AI) who works in this codebase more effective by giving them the knowledge they need BEFORE they need it.
+
+**CLAUDE.md = Quick reference for AI agents**
+**Developer Guides = Deep tutorials for humans extending features**
