@@ -15,6 +15,20 @@ category: workflow
 
 Execute this structured engineering workflow for ideation that enforces complete investigation for any code-change task (bug fix or feature). Follow each step sequentially.
 
+### Step 0: Establish Current Date
+
+**CRITICAL:** Before any research, determine the current date:
+
+```bash
+date "+%B %Y"  # e.g., "March 2026"
+```
+
+Store this as `{current-month-year}` and use it in ALL web searches to ensure results are current. For example:
+- "React Server Components best practices {current-month-year}"
+- "Next.js 14 App Router patterns {current-month-year}"
+
+This prevents outdated 2023/2024 results from polluting research findings.
+
 ### Step 1: Create Task Slug & Setup
 
 1. Create a URL-safe slug from the task brief (e.g., "fix-chat-scroll-bug")
@@ -78,6 +92,8 @@ Record under **Root Cause Analysis**.
 ### Step 5: Research
 
 1. Consult the research-expert agent to conduct comprehensive research into potential solutions to the task
+   - **IMPORTANT:** Include `{current-month-year}` (from Step 0) in all search queries to get current results
+   - Example: "TypeScript 5 satisfies operator patterns March 2026" not just "TypeScript satisfies operator"
 2. Consider which potential solutions are most appropriate for this code base by exploring the local repo further if necessary
 3. Summarize the most promising potential approaches, the pros and cons of each, and an ultimate recommendation.
 
