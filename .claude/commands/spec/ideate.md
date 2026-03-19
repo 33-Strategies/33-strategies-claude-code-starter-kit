@@ -101,7 +101,31 @@ Record findings under **Research Findings**
 
 ### Step 6: Clarification
 
-1. Create a list of any unspecified requirements or clarification that would be helpful for the user to decide upon
+1. Create a list of any unspecified requirements or clarifications that would be helpful for the user to decide upon
+
+2. **CRITICAL: For EVERY clarifying question, you MUST provide:**
+   - **Options table:** 2-4 distinct options (labeled A, B, C, etc.) with brief descriptions
+   - **Recommendation:** Your specific recommendation with rationale
+
+   **Format each clarification as:**
+   ```markdown
+   ### N. {Question Title}
+
+   **Question:** {The specific question being asked}
+
+   | Option | Description |
+   |--------|-------------|
+   | **A) {Option name}** | {Brief description of this approach} |
+   | **B) {Option name}** | {Brief description of this approach} |
+   | **C) {Option name}** | {Brief description of this approach} |
+
+   **Recommendation:** **Option X** — {Rationale explaining why this is the best choice for this codebase/context}
+   ```
+
+3. This structured format ensures the user can quickly:
+   - Understand the trade-offs at a glance
+   - See your informed recommendation
+   - Make a decision or request more detail on specific options
 
 ### Step 7: Write ideation document
 
@@ -145,8 +169,21 @@ Create `docs/ideation/{slug}.md` with the following structure:
 - **Potential solutions:** {numbered list with pros and cons for each}
 - **Recommendation** {consise description}
 
-## 6) Clarification
-- **Clarifications:** {numbered list with decisions for the user to clarify}
+## 6) Clarifications Needed
+
+{For each clarification, use this format:}
+
+### 1. {Question Title}
+
+**Question:** {The specific question being asked}
+
+| Option | Description |
+|--------|-------------|
+| **A) {Option name}** | {Brief description} |
+| **B) {Option name}** | {Brief description} |
+| **C) {Option name}** | {Brief description} |
+
+**Recommendation:** **Option X** — {Rationale}
 
 
 ```
